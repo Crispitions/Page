@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre mí - Crispitionss</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Coral+Pixels&family=Doto:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="pixelCon" id="pixel-container"></div>
+  <!-- NAVBAR -->
+  <div class="nav-wrapper">
+    <nav class="nav-bar">
+      <!-- Logo izquierda: canvas animado -->
+      <div class="nav-section nav-left">
+        <canvas id="c" class="logo-canvas" width="40" height="40"></canvas>
+      </div>
+
+      <!-- Título centro -->
+      <div class="nav-section nav-center">
+        <a href="index.html" class="nav-title pixel-nav-container" id="pixel-nav-logo"></a>
+      </div>
+
+      <!-- Menú derecha -->
+      <div class="nav-section nav-right">
+        <div class="lang-switcher">
+          <button class="lang-btn" id="langToggle">ES</button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button data-lang="es">ES</button>
+            <button data-lang="en">EN</button>
+            <button data-lang="fr">FR</button>
+          </div>
+        </div>
+        <button class="menu-icon" id="menuToggle" aria-expanded="false" aria-controls="menuDropdown">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Dropdown menu -->
+    <div class="nav-dropdown" id="menuDropdown">
+      <ul class="nav-menu">
+        <li><a href="projects.html" class="nav-link" data-i18n="nav_projects">Blog</a></li>
+        <li><a href="about.html" class="nav-link" data-i18n="nav_about">Sobre mí</a></li>
+        <li><a href="academic.html" class="nav-link" data-i18n="nav_academic">Académico</a></li>
+        <li><a href="services.html" class="nav-link" data-i18n="nav_services">Servicios</a></li>
+        <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <section id="profile" class="card">
+      <h2 data-i18n="about_title" class="page-title">👨‍💻 Sobre mí</h2>
+      <p data-i18n="profile_summary">Matemático y Científico de Datos con experiencia en análisis de datos médicos,
+        clasificación basada en MRI, modelado estadístico e investigación científica. He trabajado como Asistente de
+        Investigación en la Universidad El Bosque, contribuyendo a proyectos interdisciplinarios en neurología,
+        epidemiología ambiental y salud pública.</p>
+
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <a href="assets/CV_ENG_UPD.pdf" download class="btn-download" data-i18n="about_download_cv">📄 Descargar CV
+          (PDF)</a>
+      </div>
+    </section>
+
+    <section id="research" class="card">
+      <h2 data-i18n="research_title">Experiencia de Investigación</h2>
+
+      <div class="job-item">
+        <h3 data-i18n="res_assistant_title">Asistente de Investigación</h3>
+        <p class="job-meta">Universidad El Bosque | 2023 – 2024</p>
+        <p data-i18n="res_assistant_desc">Procesamiento y análisis de datasets satelitales de la NASA (calidad del aire,
+          temperatura) para identificar correlaciones con salud pública.</p>
+        <ul class="job-list">
+          <li data-i18n="res_assistant_ach1">Uso de Python, GeoPandas y APIs espaciales para pipelines geoespaciales.
+          </li>
+          <li data-i18n="res_assistant_ach2">Apoyo en investigación interdisciplinaria (salud pública, ingeniería
+            ambiental).</li>
+          <li data-i18n="res_assistant_ach3">Limpieza de datos, modelado estadístico y documentación académica.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <h3 data-i18n="thesis_title">Tesis de Pregrado</h3>
+        <p class="job-meta">"Machine Learning Classification Model for Multiple Sclerosis Using MRI Data" | 2024</p>
+        <p data-i18n="thesis_desc">Construcción de un clasificador de ML para distinguir patrones de MRI asociados con
+          Esclerosis Múltiple.</p>
+        <ul class="job-list">
+          <li data-i18n="thesis_ach1">Preprocesamiento de imágenes (normalización, extracción de características).</li>
+          <li data-i18n="thesis_ach2">Reducción de dimensionalidad y aprendizaje supervisado.</li>
+          <li data-i18n="thesis_ach3">Pipelines reproducibles usando librerías científicas estándar.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="experience" class="card">
+      <h2 data-i18n="exp_title">Experiencia Profesional</h2>
+
+      <div class="job-item">
+        <h3 data-i18n="job_neuro_title">Consultor de Data Science (Neurología)</h3>
+        <p class="job-meta">Proyecto Independiente | 2023 – 2025</p>
+        <p data-i18n="job_neuro_desc">Implementación de modelos estadísticos y de ML para datasets de MRI e información
+          clínica.</p>
+        <ul class="job-list">
+          <li data-i18n="job_neuro_ach1">Diseño de workflows automatizados de procesamiento de MRI (mejora del 20% en
+            eficiencia).</li>
+          <li data-i18n="job_neuro_ach2">Limpieza de datos y análisis exploratorio para datasets neurológicos.</li>
+          <li data-i18n="job_neuro_ach3">Traducción de hallazgos analíticos en insights para soporte de decisiones
+            médicas.</li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <h3 data-i18n="job_growth_title">Growth Specialist</h3>
+        <p class="job-meta">Dataico | March 2025 – September 2025</p>
+        <p data-i18n="job_growth_desc">Análisis cuantitativo para optimizar activación, retención y rendimiento del
+          funnel.</p>
+        <ul class="job-list">
+          <li data-i18n="job_growth_ach1">Aumento del "AHA moment" del 49% al 59%.</li>
+          <li data-i18n="job_growth_ach2">Generación de dashboards y reportes de comportamiento para decisiones
+            estratégicas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="card">
+      <h2 data-i18n="projects_section_title">Proyectos Científicos & Data Science</h2>
+
+      <div class="job-item">
+        <h3 data-i18n="proj_env_title">Proyecto Correlación Ambiental</h3>
+        <p class="job-meta">Grupo de Investigación Universidad El Bosque | 2024</p>
+        <ul class="job-list">
+          <li data-i18n="proj_env_ach1">Procesamiento de imágenes satelitales NASA y datasets geoespaciales vía APIs.
+          </li>
+          <li data-i18n="proj_env_ach2">Identificación de variables ambientales asociadas con mortalidad.</li>
+          <li data-i18n="proj_env_ach3">Modelos geoespaciales usando Python, GeoPandas, rasterio y estadística espacial.
+          </li>
+        </ul>
+      </div>
+
+      <div class="job-item">
+        <h3 data-i18n="proj_student_title">Modelado Predictivo Éxito Estudiantil</h3>
+        <p class="job-meta">Diginexa / Universidad El Bosque | 2024</p>
+        <ul class="job-list">
+          <li data-i18n="proj_student_ach1">Pipelines automatizados para evaluar rendimiento académico.</li>
+          <li data-i18n="proj_student_ach2">Modelos predictivos que aumentaron la detección temprana de riesgo en un
+            30%.</li>
+          <li data-i18n="proj_student_ach3">Mejora de procesos de reporte e intervención mediante insights basados en
+            datos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="competencies" class="card">
+      <h2 data-i18n="skills_title">Habilidades & Educación</h2>
+
+      <div class="skills-grid">
+        <div>
+          <h3 data-i18n="core_skills_title">Core Skills</h3>
+          <ul class="simple-list">
+            <li>Python, R, SQL</li>
+            <li>Machine Learning / Neural Networks</li>
+            <li>GeoPandas / Satellite Imagery</li>
+            <li>Power BI / Tableau</li>
+            <li>ETL Processes</li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="education_title">Educación</h3>
+          <p data-i18n="education_degree">Matemático</p>
+          <p>Universidad El Bosque</p>
+
+          <h3 data-i18n="languages_title" style="margin-top: 1rem;">Idiomas</h3>
+          <ul class="simple-list">
+            <li data-i18n="lang_es">Español (Nativo)</li>
+            <li data-i18n="lang_en">Inglés (B2 - Avanzado)</li>
+            <li data-i18n="lang_fr">Francés (A2 - Intermedio)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="simple-footer">
+      <span>© 2025 CRISPITIONSS</span>
+      <div class="footer-social">
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" />
+          </svg>
+        </a>
+        <a href="https://github.com/Crispitions" target="_blank" aria-label="GitHub">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+              d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z"
+              clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/cristian-ds/" target="_blank" aria-label="LinkedIn">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+              d="M12.51 8.796v1.69c.737-1.052 2.051-1.666 3.926-1.415 2.635.352 3.55 2.447 3.55 5.37v6.053h-3.46v-5.63c0-1.43-.52-2.21-1.583-2.35-1.064-.14-2.09.43-2.43 1.56v6.42h-3.46V8.796h3.457ZM6.703 6.915a2.006 2.006 0 1 1 0-4.012 2.006 2.006 0 0 1 0 4.012ZM8.433 20.494H4.973V8.796h3.46v11.698Z"
+              clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

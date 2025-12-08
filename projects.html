@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Crispitionss</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Coral+Pixels&family=Doto:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="pixelCon" id="pixel-container"></div>
+  <!-- NAVBAR -->
+  <div class="nav-wrapper">
+    <nav class="nav-bar">
+      <!-- Logo izquierda: canvas animado -->
+      <div class="nav-section nav-left">
+        <canvas id="c" class="logo-canvas" width="40" height="40"></canvas>
+      </div>
+
+      <!-- Título centro -->
+      <div class="nav-section nav-center">
+        <a href="index.html" class="nav-title pixel-nav-container" id="pixel-nav-logo"></a>
+      </div>
+
+      <!-- Menú derecha -->
+      <div class="nav-section nav-right">
+        <div class="lang-switcher">
+          <button class="lang-btn" id="langToggle">ES</button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button data-lang="es">ES</button>
+            <button data-lang="en">EN</button>
+            <button data-lang="fr">FR</button>
+          </div>
+        </div>
+        <button class="menu-icon" id="menuToggle" aria-expanded="false" aria-controls="menuDropdown">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Dropdown menu -->
+    <div class="nav-dropdown" id="menuDropdown">
+      <ul class="nav-menu">
+        <li><a href="projects.html" class="nav-link" data-i18n="nav_projects">Blog</a></li>
+        <li><a href="about.html" class="nav-link" data-i18n="nav_about">Sobre mí</a></li>
+        <li><a href="academic.html" class="nav-link" data-i18n="nav_academic">Académico</a></li>
+        <li><a href="services.html" class="nav-link" data-i18n="nav_services">Servicios</a></li>
+        <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <section id="projects" class="card">
+      <h2 data-i18n="projects_title" class="page-title">🚀 Proyectos Personales</h2>
+      <p data-i18n="projects_desc">Explora mis proyectos de código abierto, experimentos con IA y herramientas de datos.
+      </p>
+
+      <div class="projects-list">
+        <!-- Project 1: AI Agent -->
+        <div class="project-item">
+          <h3 data-i18n="project_ai_agent_title">Agente de IA para Visualización de Datos</h3>
+          <p data-i18n="project_ai_agent_desc">Agente inteligente que analiza bases de datos y genera visualizaciones
+            automáticamente usando LangGraph y Gemini.</p>
+          <p class="project-stack"><strong data-i18n="project_ai_agent_stack">Stack: Python, LangGraph, Gemini
+              API</strong></p>
+
+          <!-- DEMO SECTION -->
+          <div class="lab-demo pixel-box">
+            <h4 class="pixel-subtitle">🧪 Probar en vivo</h4>
+
+            <div class="lab-controls">
+              <div class="form-group">
+                <label for="lab-file" class="pixel-label">1. Sube tu CSV/Excel:</label>
+                <div class="file-input-wrapper">
+                  <input type="file" id="lab-file" accept=".csv, .xlsx, .xls" class="pixel-input-file">
+                </div>
+                <div class="dataset-helpers" style="margin-top: 10px; display: flex; gap: 10px;">
+                  <button id="btn-load-default" type="button" class="pixel-btn-small"
+                    style="font-size: 0.8rem; padding: 5px 10px; background: rgba(80, 250, 123, 0.2); border: 1px dashed #50fa7b; color: #50fa7b; cursor: pointer;">
+                    📂 Cargar Dataset Prueba (Streams)
+                  </button>
+                  <a href="https://www.kaggle.com/datasets" target="_blank" class="pixel-btn-small"
+                    style="font-size: 0.8rem; padding: 5px 10px; background: rgba(189, 147, 249, 0.2); border: 1px dashed #bd93f9; color: #bd93f9; text-decoration: none;">
+                    🌐 Buscar en Kaggle
+                  </a>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="lab-prompt" class="pixel-label">2. ¿Qué quieres saber?</label>
+                <textarea id="lab-prompt" rows="2" class="pixel-textarea"
+                  placeholder="Ej: ¿Cuál es el producto más vendido?"></textarea>
+              </div>
+
+              <button id="lab-submit" class="btn-download" style="width: 100%; text-align: center; margin-top: 10px;">
+                ANALIZAR DATOS
+              </button>
+            </div>
+
+            <!-- RESULTS SEPARATOR -->
+            <div id="results-separator" style="display: none; border-top: 2px dashed var(--accent-1); margin: 30px 0;">
+            </div>
+
+            <!-- RESULTS -->
+            <div id="lab-results" class="lab-results-area" style="display: none;">
+              <h3 class="pixel-subtitle" style="text-align: center; color: var(--accent-3); margin-bottom: 20px;">📊
+                RESULTADOS DEL ANÁLISIS</h3>
+
+              <div id="lab-loading" class="pixel-loading">
+                <span class="blink">⏳ Analizando...</span>
+              </div>
+              <div id="lab-analysis" class="pixel-card-content"></div>
+              <div id="lab-charts-container" class="charts-grid">
+                <div class="pixel-placeholder">
+                  [ AQUÍ APARECERÁN TUS GRÁFICAS ]
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="simple-footer">
+      <span>© 2025 CRISPITIONSS</span>
+      <div class="footer-social">
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" />
+          </svg>
+        </a>
+        <a href="https://github.com/Crispitions" target="_blank" aria-label="GitHub">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+              d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z"
+              clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/cristian-ds/" target="_blank" aria-label="LinkedIn">
+          <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+              d="M12.51 8.796v1.69c.737-1.052 2.051-1.666 3.926-1.415 2.635.352 3.55 2.447 3.55 5.37v6.053h-3.46v-5.63c0-1.43-.52-2.21-1.583-2.35-1.064-.14-2.09.43-2.43 1.56v6.42h-3.46V8.796h3.457ZM6.703 6.915a2.006 2.006 0 1 1 0-4.012 2.006 2.006 0 0 1 0 4.012ZM8.433 20.494H4.973V8.796h3.46v11.698Z"
+              clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="main.js"></script>
+  <script src="lab_client.js"></script>
+</body>
+
+</html>
