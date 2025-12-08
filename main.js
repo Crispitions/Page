@@ -140,8 +140,11 @@ function createPixels() {
   // Since elements float, if they exceed 100%, they wrap.
   // 67 * 1.5 = 100.5% -> Wraps.
   // So we effectively have 66 columns.
-  const cols = Math.floor(100 / 1.5);
-  const pixelSize = window.innerWidth * 0.015; // Exactly 1.5% of width
+  // Optimize for mobile: Increase pixel size to reduce DOM count
+  const isMobile = window.innerWidth < 768;
+  const sizePercent = isMobile ? 0.04 : 0.015; // 4% on mobile, 1.5% on desktop
+  const cols = Math.floor(100 / (sizePercent * 100));
+  const pixelSize = window.innerWidth * sizePercent;
   const rows = Math.ceil(window.innerHeight / pixelSize);
   const totalPixels = cols * rows;
 
@@ -151,6 +154,8 @@ function createPixels() {
   for (let i = 0; i < totalPixels; i++) {
     const div = document.createElement('div');
     div.classList.add('pixel');
+    div.style.width = sizePercent * 100 + "%";
+    div.style.paddingTop = sizePercent * 100 + "%";
 
     // Randomize animation delay
     div.style.animationDelay = Math.ceil(Math.random() * 5000) + "ms";
