@@ -4,9 +4,19 @@ from io import BytesIO, StringIO
 def read_dataset(file_bytes: bytes, filename: str) -> pd.DataFrame:
     """Lee CSV o Excel desde bytes."""
     if filename.lower().endswith(".csv"):
-        return pd.read_csv(StringIO(file_bytes.decode("utf-8")))
+        # Try to parse dates automatically
+        df = pd.read_csv(StringIO(file_bytes.decode("utf-8")))
+        # Attempt to convert common date columns
+        for col in df.columns:
+            if 'date' in col.lower() or 'time' in col.lower():
+                try:
+                    df[col] = pd.to_datetime(df[col])
+                except:
+                    pass
+        return df
     elif filename.lower().endswith((".xls", ".xlsx")):
-        return pd.read_excel(BytesIO(file_bytes))
+        df = pd.read_excel(BytesIO(file_bytes))
+        return df
     else:
         raise ValueError("Formato de archivo no soportado. Usa CSV o Excel.")
 
@@ -61,7 +71,31 @@ def summarize_df(df: pd.DataFrame, max_rows: int = 5) -> str:
             except Exception:
                 pass
 
-    # Aggregations for Time/Numeric trends (e.g. Week of Year)
+    # Time Series Summary
+    date_cols = df.select_dtypes(include=['datetime']).columns
+    for dt_col in date_cols:
+        lines.append(f"\nResumen Temporal ({dt_col}):")
+        lines.append(f"- Inicio: {df[dt_col].min()}")
+        lines.append(f"- Fin: {df[dt_col].max()}")
+        
+        # Resample numeric columns by Year or Month if possible
+        for num in num_cols:
+            if "id" in num.lower(): continue
+            try:
+                # Group by Year and take mean
+                lines.append(f"\n- Tendencia Anual '{num}':")
+                # Create a temporary column for year to avoid modifying original df
+                temp_year = df[dt_col].dt.year
+                yearly_avg = df.groupby(temp_year)[num].mean().head(10).to_dict() # Top 10 years to save space? Or last 10?
+                # Let's take 10 evenly spaced points if many years
+                keys = sorted(list(yearly_avg.keys()))
+                if len(keys) > 10:
+                    keys = keys[::len(keys)//10]
+                
+                for k in keys:
+                    lines.append(f"  {k}: {yearly_avg[k]:.2f}")
+            except Exception:
+                pass
     for num_col_group in num_cols:
         if any(x in num_col_group.lower() for x in ['week', 'year', 'day', 'month', 'date', 'period']):
              for num_target in num_cols:

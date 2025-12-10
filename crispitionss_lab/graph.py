@@ -59,7 +59,8 @@ Structure:
     }
   ]
 }
-If exact data values are available in the summary (e.g. from value_counts), include them in the "data" field (limit to top 5). If not, leave "data" empty.
+If exact data values are available in the summary (e.g. from value_counts or temporal trends), include them in the "data" field. 
+IMPORTANT: If the user asks for a time series and you have a "Temporal Summary" (like yearly averages), USE THAT data for the chart. Do not simply say "no data". Plot the trend.
 """
 
     user_prompt = f"""
