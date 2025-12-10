@@ -397,6 +397,23 @@ header::before {
   transition: all 0.2s ease;
 }
 
+@media (max-width: 768px) {
+  .pixel-nav-dot {
+    width: 1.5px;
+    height: 1.5px;
+  }
+
+  .pixel-nav-container {
+    transform: scale(0.8);
+    /* Scale down entire text if needed */
+  }
+
+  .nav-center {
+    overflow: hidden;
+    /* Prevent overflow */
+  }
+}
+
 .pixel-nav-dot.filled {
   background-color: var(--text-main);
   /* Default text color */
