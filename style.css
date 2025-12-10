@@ -364,12 +364,17 @@ header::before {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .pixel-text-dot {
-    width: 1.5vw;
-    height: 1.5vw;
+    width: 1.2vw;
+    /* Reduced from 1.5vw to fit on one line */
+    height: 1.2vw;
   }
 
   .pixel-header-container {
-    gap: 0.5vw;
+    gap: 0.3vw;
+    width: 100%;
+    /* Ensure container takes full width */
+    overflow: visible;
+    /* Prevent clipping */
   }
 }
 
